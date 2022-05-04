@@ -13,7 +13,6 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
       .input-focus:focus {
         border-color: #ffa31b;
@@ -42,12 +41,7 @@
             <div class="card shadow-lg">
               <div class="card-body p-5">
                 <h1 class="fs-4 card-title fw-bold mb-4">Login</h1>
-                <form
-                  class="needs-validation"
-                  autocomplete="off"
-                  novalidate
-                  action="shopping-cart.html"
-                >
+                <form class="needs-validation" autocomplete="off" novalidate>
                   <div class="mb-3">
                     <label for="email" class="mb-2 text-muted"
                       >E-Mail Address</label
@@ -75,6 +69,7 @@
                   </div>
                   <div class="d-flex align-items-center">
                     <button
+                      id="login"
                       type="submit"
                       class="btn btn-warning ms-auto w-100 mt-3 button-orange text-white"
                     >
@@ -99,6 +94,8 @@
         </div>
       </div>
     </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../js/login.js"></script>
     <script>
       (function () {
         "use strict";
@@ -122,29 +119,6 @@
           );
         });
       })();
-
-      const employees = [
-        {
-          name: "Rangga",
-          email: "adityarangga990@gmail.com",
-          password: 123,
-        },
-        {
-          name: "Mada",
-          email: "mada@gmail.com",
-          password: 456,
-        },
-      ];
-
-      $(function () {
-        $("button").click(function (e) {
-          const email = $("[type='email']").val();
-          const password = +$("[type='password']").val();
-
-          for (const employee of employees) {
-          }
-        });
-      });
     </script>
   </body>
 </html>

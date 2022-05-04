@@ -1,0 +1,177 @@
+[
+  [
+    {
+      "id": "1",
+      "name": "Rangga",
+      "email": "adityarangga990@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "2",
+      "name": "Rey",
+      "email": "rey123@gmail.com",
+      "password": "456"
+    },
+    {
+      "id": "3",
+      "name": "Rara",
+      "email": "rara12345@gmail.com",
+      "password": "789"
+    },
+    {
+      "id": "39",
+      "name": "asep",
+      "email": "asep@gmail.com",
+      "password": "345"
+    },
+    {
+      "id": "41",
+      "name": "sugeng",
+      "email": "sugeng@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "43",
+      "name": "Budi",
+      "email": "budi@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "53",
+      "name": "Amel",
+      "email": "amel@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "59",
+      "name": "Malih",
+      "email": "malih@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "64",
+      "name": "Tyo",
+      "email": "tyo@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "66",
+      "name": "Susi",
+      "email": "susi@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "68",
+      "name": "Malihhh",
+      "email": "malihkundang@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "75",
+      "name": "Reza",
+      "email": "reza@gmail.com",
+      "password": "12345"
+    },
+    { "id": "76", "name": "Aji", "email": "Aji@gmail.com", "password": "123" }
+  ],
+  [
+    {
+      "id": "1",
+      "name": "ONSITE Rapid Test",
+      "category": "ONSITE",
+      "supplier": "Indolab Utama",
+      "stock": "65"
+    },
+    {
+      "id": "2",
+      "name": "ONSITE Swab Antigen",
+      "category": "ONSITE",
+      "supplier": "Indolab Utama",
+      "stock": "10"
+    },
+    {
+      "id": "3",
+      "name": "ZYBIO Rapid Test ",
+      "category": "ZYBIO",
+      "supplier": "AGM Medica",
+      "stock": "80"
+    },
+    {
+      "id": "4",
+      "name": "ZYBIO Swab Antigen",
+      "category": "ZYBIO",
+      "supplier": "AGM Medica",
+      "stock": "10"
+    },
+    {
+      "id": "5",
+      "name": "ZYBIO Neutralizing Antibody",
+      "category": "ZYBIO",
+      "supplier": "AGM Medica",
+      "stock": "90"
+    },
+    {
+      "id": "6",
+      "name": "Reagen Detection",
+      "category": "REAGENT",
+      "supplier": "Emedis",
+      "stock": "80"
+    },
+    {
+      "id": "7",
+      "name": "KY-BIO Swab Antigen",
+      "category": "KY-BIO",
+      "supplier": "Cahaya Alkes",
+      "stock": "70"
+    },
+    {
+      "id": "8",
+      "name": "AEHEALTH Neutralizing Antibody",
+      "category": "AEHEALTH",
+      "supplier": "Cahaya Alkes",
+      "stock": "14"
+    },
+    {
+      "id": "9",
+      "name": "Reagent Extraction Super",
+      "category": "REAGENT",
+      "supplier": "Emedis",
+      "stock": "70"
+    },
+    {
+      "id": "17",
+      "name": "CePAD Super Rapid Test",
+      "category": "CePAD",
+      "supplier": "Sumber Kasih",
+      "stock": "20"
+    },
+    {
+      "id": "19",
+      "name": "PANBIO Rapid Test",
+      "category": "PANBIO",
+      "supplier": "Kertajaya Kusuma",
+      "stock": "34"
+    },
+    {
+      "id": "20",
+      "name": "BIOZEK Super Rapid Test",
+      "category": "BIOZEK",
+      "supplier": "Sumber Utama",
+      "stock": "20"
+    },
+    {
+      "id": "30",
+      "name": "CLUNGENE Super Rapid Test",
+      "category": "CLUNGENE",
+      "supplier": "Sejahtera Utama",
+      "stock": "20"
+    },
+    {
+      "id": "31",
+      "name": "Reagent Max",
+      "category": "REAGENT",
+      "supplier": "Sumber Kasih",
+      "stock": "20"
+    }
+  ]
+]
