@@ -137,41 +137,6 @@
       "category": "REAGENT",
       "supplier": "Emedis",
       "stock": "70"
-    },
-    {
-      "id": "17",
-      "name": "CePAD Super Rapid Test",
-      "category": "CePAD",
-      "supplier": "Sumber Kasih",
-      "stock": "20"
-    },
-    {
-      "id": "19",
-      "name": "PANBIO Rapid Test",
-      "category": "PANBIO",
-      "supplier": "Kertajaya Kusuma",
-      "stock": "34"
-    },
-    {
-      "id": "20",
-      "name": "BIOZEK Super Rapid Test",
-      "category": "BIOZEK",
-      "supplier": "Sumber Utama",
-      "stock": "20"
-    },
-    {
-      "id": "30",
-      "name": "CLUNGENE Super Rapid Test",
-      "category": "CLUNGENE",
-      "supplier": "Sejahtera Utama",
-      "stock": "20"
-    },
-    {
-      "id": "31",
-      "name": "Reagent Max",
-      "category": "REAGENT",
-      "supplier": "Sumber Kasih",
-      "stock": "20"
     }
   ]
 ]
