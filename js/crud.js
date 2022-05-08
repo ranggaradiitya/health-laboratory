@@ -164,5 +164,7 @@ function searchProduct() {
     }
     alert("Product not found");
     clearInput();
+  } else {
+    alert("Please enter an ID Product")
   }
 }
