@@ -17,62 +17,7 @@
       "name": "Rara",
       "email": "rara12345@gmail.com",
       "password": "789"
-    },
-    {
-      "id": "39",
-      "name": "asep",
-      "email": "asep@gmail.com",
-      "password": "345"
-    },
-    {
-      "id": "41",
-      "name": "sugeng",
-      "email": "sugeng@gmail.com",
-      "password": "123"
-    },
-    {
-      "id": "43",
-      "name": "Budi",
-      "email": "budi@gmail.com",
-      "password": "12345"
-    },
-    {
-      "id": "53",
-      "name": "Amel",
-      "email": "amel@gmail.com",
-      "password": "12345"
-    },
-    {
-      "id": "59",
-      "name": "Malih",
-      "email": "malih@gmail.com",
-      "password": "12345"
-    },
-    {
-      "id": "64",
-      "name": "Tyo",
-      "email": "tyo@gmail.com",
-      "password": "12345"
-    },
-    {
-      "id": "66",
-      "name": "Susi",
-      "email": "susi@gmail.com",
-      "password": "12345"
-    },
-    {
-      "id": "68",
-      "name": "Malihhh",
-      "email": "malihkundang@gmail.com",
-      "password": "123"
-    },
-    {
-      "id": "75",
-      "name": "Reza",
-      "email": "reza@gmail.com",
-      "password": "12345"
-    },
-    { "id": "76", "name": "Aji", "email": "Aji@gmail.com", "password": "123" }
+    }
   ],
   [
     {
