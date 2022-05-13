@@ -6,7 +6,7 @@ function addDataToLocalStorage() {
   if (isDataAvailable) return;
   $.getJSON("/health-laboratory/rajaerba.json",
     function (data) {
-      localStorage.setItem("rajaerba", JSON.stringify(data))
+      localStorage.setItem("rajaerba", JSON.stringify(data));
     }
   );
 }
@@ -23,7 +23,7 @@ function productShowcase() {
         <div class="card h-100 shadow p-3">
           <div class="p-3 bg-dark bg-opacity-10 rounded-3">
             <img
-              src="images/${product.image}"
+              src="/images/${product.image}"
               class="card-img-top"
               alt="..."
             />
