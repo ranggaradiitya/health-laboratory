@@ -1,43 +1,95 @@
-if (document.readyState == "loading") {
-  document.addEventListener("DOMContentLoaded", ready);
-} else {
-  ready();
-}
+ready();
 
 function ready() {
-  let removeCartItemButtons = document.getElementsByClassName("btn-danger");
-  for (let i = 0; i < removeCartItemButtons.length; i++) {
-    let button = removeCartItemButtons[i];
-    button.addEventListener("click", removeCardItem);
-  }
-
-  let quantityInputs = document.getElementsByClassName("quantity");
-  for (let i = 0; i < quantityInputs.length; i++) {
-    let input = quantityInputs[i];
-    input.addEventListener("change", quantityChanged);
-  }
-
-  let addToCartButtons = document.getElementsByClassName("add-cart");
-  for (let i = 0; i < addToCartButtons.length; i++) {
-    let button = addToCartButtons[i];
-    button.addEventListener("click", addToCartClicked);
-  }
-
-  document
-    .getElementsByClassName("btn-purchase")[0]
-    .addEventListener("click", purchaseClicked);
+  addProductList();
+  addEventToRemoveButton();
+  addEventToQuantityField();
+  addEventToAddToChartButton();
+  addEventToPurchaseButton();
 }
 
-function purchaseClicked() {
-  alert("Thank you for your purchase");
-  let tableItems = document.getElementsByTagName("tbody")[0];
-  tableItems.innerHTML = "";
-  updateCartTotal();
+function addProductList() {
+  $("#product-list").empty();
+  const products = getProductsFromLocalStorage();
+  $.each(products, function (index, product) {
+    if (Number(product.stock) === 0) {
+      return;
+    }
+
+    $("#product-list").append(`
+      <div class="col">
+        <div class="card h-100 shadow p-3">
+          <div class="p-3 bg-dark bg-opacity-10 rounded-3">
+            <img
+              src="../images/${product.image}"
+              class="card-img-top"
+              alt="..."
+            />
+          </div>
+          <div class="card-body px-0">
+            <h6 class="card-title fw-bold text-warning">${product.name}</h6>
+            <p class="card-text m-0">${formatRupiah(product.price)}</p>
+            <p class="card-stock">Stock: ${product.stock}</p>
+          </div>
+          <button
+            class="btn btn-warning text-light add-cart"
+            id="onsite-rapid"
+          >
+            Add to cart
+          </button>
+        </div>
+      </div>
+    `);
+  });
+}
+
+function getEmployeesFromLocalStorage() {
+  return JSON.parse(localStorage.getItem("rajaerba"))[0];
+}
+
+function getProductsFromLocalStorage() {
+  return JSON.parse(localStorage.getItem("rajaerba"))[1];
+}
+
+function setProductsToLocalStorage(products) {
+  localStorage.setItem("rajaerba", JSON.stringify([getEmployeesFromLocalStorage(), products]))
+}
+
+function addEventToRemoveButton() {
+  $(".btn-danger").each(function (index, element) {
+    $(element).click(function (e) {
+      removeCardItem(e);
+    });
+  });
+}
+
+function addEventToQuantityField() {
+  $(".quantity").each(function (index, element) {
+    $(element).on("change", function (e) {
+      quantityChanged(e);
+    });
+    $(element).on("input", function (e) {
+      checkQuantity(e);
+    });
+  });
+}
+
+function addEventToAddToChartButton() {
+  $(".add-cart").each(function (index, element) {
+    $(element).click(function (e) {
+      addToCartClicked(e);
+    });
+  });
+}
+
+function addEventToPurchaseButton() {
+  $(".btn-purchase").click(function (e) {
+    purchaseClicked(e);
+  });
 }
 
 function removeCardItem(event) {
-  let buttonClicked = event.target;
-  buttonClicked.parentElement.parentElement.remove();
+  $(event.target).closest("tr").remove()
   updateCartTotal();
 }
 
@@ -49,64 +101,132 @@ function quantityChanged(event) {
   updateCartTotal();
 }
 
+function checkQuantity(event) {
+  const productName = $(event.target).parent().siblings(".title").text();
+  const quantity = $(event.target).val();
+  const products = getProductsFromLocalStorage();
+  $.each(products, function (index, product) {
+    if (productName === product.name) {
+      if (Number(quantity) > Number(product.stock)) {
+        $(event.target).val(product.stock);
+      }
+      return false;
+    }
+  });
+}
+
 function addToCartClicked(event) {
-  let button = event.target;
-  let shopItem = button.parentElement.parentElement;
-  let title = shopItem.getElementsByClassName("card-title")[0].innerText;
-  let price = shopItem.getElementsByClassName("card-text")[0].innerText;
+  let title = $(event.target).prev().children(".card-title").text();
+  let price = $(event.target).prev().children(".card-text").text();
   addItemToCart(title, price);
   updateCartTotal();
 }
 
-function addItemToCart(title, price) {
-  let tableRow = document.createElement("tr");
-  let tableItems = document.getElementsByTagName("tbody")[0];
-  let tableItemsNames = document.getElementsByClassName("title");
-  for (let i = 0; i < tableItemsNames.length; i++) {
-    if (tableItemsNames[i].innerText == title) {
-      alert("This item is already added to the cart");
-      return;
-    }
+function purchaseClicked() {
+  if ($("tbody").children("tr").length === 0) {
+    alert("Cart is empty, add products first before purchase");
+    return;
   }
-  let tableRowContents = `
-    <td class="title">${title}</td>
-    <td class="price">${price}</td>
-    <td style="width: 15%">
-      <input
-        type="number"
-        min="1"
-        class="form-control quantity"
-        value="1"
-      />
-    </td>
-    <td class="text-center">
-      <button class="btn btn-danger remove">Remove</button>
-    </td>
-  `;
-  tableRow.innerHTML = tableRowContents;
-  tableItems.append(tableRow);
-  tableRow
-    .getElementsByClassName("btn-danger")[0]
-    .addEventListener("click", removeCardItem);
-  tableRow
-    .getElementsByClassName("quantity")[0]
-    .addEventListener("change", quantityChanged);
+  const myModal = new bootstrap.Modal(document.getElementById('myModal'))
+  myModal.show()
+
+  addEventtoModal();
+}
+
+function addEventtoModal() {
+  // reset form when click close button
+  $(".btn-close").click(function (e) {
+    $("#payment-details")[0].reset();
+  });
+
+  // total price to pay
+  $("#total-payment").text($(".total-price").text());
+
+  // event when pay button clicked
+  $("#pay").click(function (e) {
+    const name = $("#name").val();
+    const email = $("#email").val();
+    const address = $("#address").val();
+    const cardNumber = $("#card-number").val();
+    const cardName = $("#card-name").val();
+    const expiryDate = $("#expiry-date").val();
+    const cvCode = $("#cv-code").val();
+
+    const isValid = name && email && address && cardNumber && cardName && expiryDate && cvCode;
+    if (isValid) {
+      updateProduct();
+    }
+  });
+}
+
+function updateProduct() {
+  $(".cart-list").each(function (index, element) {
+    const title = $(element).children(".title").text();
+    const quantity = $(element).find(".quantity").val();
+
+    const products = getProductsFromLocalStorage();
+    for (const product of products) {
+      if (product.name === title) {
+        product.stock -= quantity;
+        break;
+      }
+    }
+
+    setProductsToLocalStorage(products);
+  });
+
+  $("tbody").html("");
+  updateCartTotal();
+  ready();
+  alert("Thank you for your purchase");
+}
+
+function addItemToCart(title, price) {
+  let isProductAvailable;
+
+  $(".title").each(function (index, element) {
+    if ($(element).text() === title) {
+      alert("This item is already addes to the cart");
+      isProductAvailable = true;
+    }
+  });
+
+  if (isProductAvailable) {
+    return;
+  }
+
+  $("tbody").append(`
+    <tr class="cart-list">
+      <td class="title">${title}</td>
+      <td class="price">${price}</td>
+      <td style="width: 15%">
+        <input
+          id="quantity"
+          type="number"
+          min="1"
+          class="form-control quantity input-focus"
+          value="1"
+        />
+      </td>
+      <td class="text-center">
+        <button class="btn btn-danger remove">Remove</button>
+      </td>
+    </tr>
+  `);
+
+  addEventToRemoveButton();
+  addEventToQuantityField();
 }
 
 function updateCartTotal() {
-  let tableBody = document.getElementsByTagName("tbody")[0];
-  let tableRows = tableBody.getElementsByTagName("tr");
   let total = 0;
-  for (let i = 0; i < tableRows.length; i++) {
-    let tableRow = tableRows[i];
-    let priceElement = tableRow.getElementsByClassName("price")[0];
-    let quantityElement = tableRow.getElementsByClassName("quantity")[0];
-    let price = priceElement.innerText.replace("Rp", "").replace(".", "");
-    let quantity = quantityElement.value;
-    total += price * quantity;
-  }
-  document.getElementsByClassName("total-price")[0].innerText =
-    formatRupiah(total);
+  $("tbody").children("tr").each(function (index, element) {
+    let price = $(element).find(".price").text().replace("Rp", "").replace(".", "");
+    let quantity = $(element).find(".quantity").val();
+    total += price * quantity
+  });
+
+  $(".total-price").text(formatRupiah(total));
 }
 
 function formatRupiah(money) {

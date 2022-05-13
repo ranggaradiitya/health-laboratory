@@ -1,18 +1,6 @@
-// addDataFromJSONtoLocalStorage();
 refreshProducts();
 crudOperation();
 clearInput();
-
-// function addDataFromJSONtoLocalStorage() {
-//   const productsEmpty = !(localStorage.getItem("products"));
-//   if (productsEmpty) {
-//     $.getJSON("../rajaerba.json",
-//       function (data) {
-//         localStorage.setItem("products", JSON.stringify(data[1]))
-//       }
-//     );
-//   }
-// }
 
 function refreshProducts() {
   $("tbody").empty();
@@ -25,6 +13,7 @@ function refreshProducts() {
         <td>${product.category}</td>
         <td>${product.supplier}</td>
         <td>${product.stock}</td>
+        <td>${formatRupiah(product.price)}</td>
       </tr>
     `);
   });
@@ -47,9 +36,6 @@ function crudOperation() {
         e.preventDefault();
         searchProduct();
         break;
-      case "clear":
-        e.preventDefault();
-        clearInput();
     }
   });
 }
@@ -72,6 +58,7 @@ function clearInput() {
   $("#category").val("");
   $("#supplier").val("");
   $("#stock").val("");
+  $("#price").val("");
 }
 
 function addProduct() {
@@ -79,8 +66,10 @@ function addProduct() {
   const category = $("#category").val();
   const supplier = $("#supplier").val();
   const stock = $("#stock").val();
+  const price = $("#price").val();
 
-  if (name && category && supplier && stock) {
+  const isValid = name && category && supplier && stock && price;
+  if (isValid) {
     const products = getProductsFromLocalStorage();
     for (const product of products) {
       if (name === product.name) {
@@ -94,7 +83,9 @@ function addProduct() {
       name,
       category,
       supplier,
-      stock
+      stock,
+      price,
+      image: "blank.png"
     })
     alert("Product added successfully");
     setProductsToLocalStorage(products);
@@ -108,8 +99,10 @@ function updateProduct() {
   const category = $("#category").val();
   const supplier = $("#supplier").val();
   const stock = $("#stock").val();
+  const price = $("#price").val();
 
-  if (id && name && category && supplier && stock) {
+  const isValid = name && category && supplier && stock && price;
+  if (isValid) {
     const products = getProductsFromLocalStorage();
     for (const product of products) {
       if (product.id === id) {
@@ -117,6 +110,7 @@ function updateProduct() {
         product.category = category;
         product.supplier = supplier;
         product.stock = stock;
+        product.price = price;
         break;
       }
     };
@@ -159,6 +153,7 @@ function searchProduct() {
         $("#category").val(product.category)
         $("#supplier").val(product.supplier)
         $("#stock").val(product.stock);
+        $("#price").val(product.price);
         return;
       }
     }
@@ -167,4 +162,14 @@ function searchProduct() {
   } else {
     alert("Please enter an ID Product")
   }
+}
+
+function formatRupiah(money) {
+  return new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+    minimumFractionDigits: 0,
+  })
+    .format(money)
+    .replace(/\s/g, "");
 }

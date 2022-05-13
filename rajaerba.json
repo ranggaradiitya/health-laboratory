@@ -19,63 +19,81 @@
       "name": "ONSITE Rapid Test",
       "category": "ONSITE",
       "supplier": "Indolab Utama",
-      "stock": "65"
+      "stock": "65",
+      "price": "950000",
+      "image": "onsite-rapid.png"
     },
     {
       "id": "2",
       "name": "ONSITE Swab Antigen",
       "category": "ONSITE",
       "supplier": "Indolab Utama",
-      "stock": "10"
+      "stock": "10",
+      "price": "725000",
+      "image": "onsite-swab.png"
     },
     {
       "id": "3",
       "name": "ZYBIO Rapid Test ",
       "category": "ZYBIO",
       "supplier": "AGM Medica",
-      "stock": "80"
+      "stock": "80",
+      "price": "850000",
+      "image": "zybio-rapid.png"
     },
     {
       "id": "4",
       "name": "ZYBIO Swab Antigen",
       "category": "ZYBIO",
       "supplier": "AGM Medica",
-      "stock": "10"
+      "stock": "10",
+      "price": "1000000",
+      "image": "zybio-swab.png"
     },
     {
       "id": "5",
       "name": "ZYBIO Neutralizing Antibody",
       "category": "ZYBIO",
       "supplier": "AGM Medica",
-      "stock": "90"
+      "stock": "90",
+      "price": "650000",
+      "image": "zybio-antibody.png"
     },
     {
       "id": "6",
       "name": "Reagen Detection",
       "category": "REAGENT",
       "supplier": "Emedis",
-      "stock": "80"
+      "stock": "80",
+      "price": "200000",
+      "image": "reagen.png"
     },
     {
       "id": "7",
       "name": "KY-BIO Swab Antigen",
       "category": "KY-BIO",
       "supplier": "Cahaya Alkes",
-      "stock": "70"
+      "stock": "70",
+      "price": "900000",
+      "image": "kybio-swab.png"
     },
     {
       "id": "8",
       "name": "AEHEALTH Neutralizing Antibody",
       "category": "AEHEALTH",
       "supplier": "Cahaya Alkes",
-      "stock": "14"
+      "stock": "14",
+      "price": "950000",
+      "image": "aehealth-antibody.png"
     },
     {
       "id": "9",
       "name": "Reagent Extraction Super",
       "category": "REAGENT",
       "supplier": "Emedis",
-      "stock": "70"
+      "stock": "70",
+      "price": "800000",
+      "image": "reagen-extraction.png"
     }
   ]
 ]
