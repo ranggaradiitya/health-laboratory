@@ -1,14 +1,17 @@
 addDataToLocalStorage();
-productShowcase();
+setTimeout(() => {
+  productShowcase();
+}, 1000);
 
 function addDataToLocalStorage() {
   const isDataAvailable = localStorage.getItem("rajaerba");
-  if (isDataAvailable) return;
+  if (isDataAvailable) return "data already exists";
   $.getJSON("/health-laboratory/rajaerba.json",
     function (data) {
       localStorage.setItem("rajaerba", JSON.stringify(data));
     }
   );
+  return "successfully added data";
 }
 
 function productShowcase() {
