@@ -202,6 +202,10 @@ function addItemToCart(title, price) {
     </tr>
   `);
 
+  setTimeout(() => {
+    alert("Product successfully added to cart");
+  }, 250);
+
   addEventToRemoveButton();
   addEventToQuantityField();
 }

@@ -26,8 +26,11 @@
             src="../images/rajaerba-logo.png"
             class="img-fluid"
             alt=""
-            width="250"
+            width="200"
         /></a>
+        <a href="#shopping-cart" class="btn btn-warning d-sm-none text-white">
+          <i class="bi bi-cart"></i>
+        </a>
         <button
           class="navbar-toggler"
           type="button"
@@ -89,12 +92,12 @@
             <h1 class="text-warning mb-4 text-center text-sm-start">Product</h1>
             <div
               id="product-list"
-              class="row row-cols-2 row-cols-md-3 g-1 g-md-4"
+              class="row row-cols-2 row-cols-lg-3 g-1 g-lg-4"
             >
               <!-- list product get from local storage -->
             </div>
           </div>
-          <div class="col mb-5 mb-md-0">
+          <div class="col mb-5 mb-md-0" id="shopping-cart">
             <h1 class="text-warning mb-4 text-center text-sm-start">
               Shopping Cart
             </h1>
@@ -208,7 +211,7 @@
                           maxlength="16"
                         />
                       </div>
-                      <div class="col">
+                      <div class="col d-flex flex-column justify-content-end">
                         <label class="mb-2" for="expiry-date"
                           >Expiry Date</label
                         >
