@@ -1,6 +1,10 @@
-refreshProducts();
-crudOperation();
-clearInput();
+ready();
+
+function ready() {
+  refreshProducts();
+  crudOperation();
+  clearInput();
+}
 
 function refreshProducts() {
   $("tbody").empty();
@@ -173,3 +177,5 @@ function formatRupiah(money) {
     .format(money)
     .replace(/\s/g, "");
 }
+
+

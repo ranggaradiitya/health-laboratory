@@ -43,18 +43,6 @@ function addProductList() {
   });
 }
 
-function getEmployeesFromLocalStorage() {
-  return JSON.parse(localStorage.getItem("rajaerba"))[0];
-}
-
-function getProductsFromLocalStorage() {
-  return JSON.parse(localStorage.getItem("rajaerba"))[1];
-}
-
-function setProductsToLocalStorage(products) {
-  localStorage.setItem("rajaerba", JSON.stringify([getEmployeesFromLocalStorage(), products]))
-}
-
 function addEventToRemoveButton() {
   $(".btn-danger").each(function (index, element) {
     $(element).click(function (e) {
@@ -229,6 +217,18 @@ function updateCartTotal() {
   $(".total-price").text(formatRupiah(total));
 }
 
+function getEmployeesFromLocalStorage() {
+  return JSON.parse(localStorage.getItem("rajaerba"))[0];
+}
+
+function getProductsFromLocalStorage() {
+  return JSON.parse(localStorage.getItem("rajaerba"))[1];
+}
+
+function setProductsToLocalStorage(products) {
+  localStorage.setItem("rajaerba", JSON.stringify([getEmployeesFromLocalStorage(), products]))
+}
+
 function formatRupiah(money) {
   return new Intl.NumberFormat("id-ID", {
     style: "currency",
@@ -238,3 +238,4 @@ function formatRupiah(money) {
     .format(money)
     .replace(/\s/g, "");
 }
+

@@ -1,7 +1,12 @@
-addDataToLocalStorage();
-setTimeout(() => {
-  productShowcase();
-}, 1000);
+ready();
+
+function ready() {
+  addDataToLocalStorage();
+  setTimeout(() => {
+    productShowcase();
+  }, 1000);
+  goToTopButton();
+}
 
 function addDataToLocalStorage() {
   const isDataAvailable = localStorage.getItem("rajaerba");
@@ -41,4 +46,18 @@ function productShowcase() {
 
 function getProductsFromLocalStorage() {
   return JSON.parse(localStorage.getItem("rajaerba"))[1];
+}
+
+function goToTopButton() {
+  $(window).scroll(function () {
+    if ($("html").scrollTop() > 20 || $("body").scrollTop() > 20) {
+      $("#myBtn").css("display", "block");
+    } else {
+      $("#myBtn").css("display", "none");
+    }
+  });
+  $("#myBtn").click(function (e) {
+    $("html").scrollTop(0);
+    $("body").scrollTop(0);
+  });
 }

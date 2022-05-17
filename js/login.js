@@ -1,5 +1,21 @@
 login();
 
+function login() {
+  $("#login").click(function (e) {
+    const email = $("#email").val();
+    const password = $("#password").val();
+
+    if (email && password) {
+      if (isEmployeeExists(email, password)) {
+        window.location.href = '../pages/dashboard.html';
+        return false;
+      }
+      alert("Email or password is wrong");
+    }
+  });
+}
+
+
 function getEmployeesFromLocalStorage() {
   return JSON.parse(localStorage.getItem("rajaerba"))[0];
 }
@@ -13,19 +29,5 @@ function isEmployeeExists(email, password) {
   return false;
 }
 
-function login() {
-  $("#login").click(function (e) {
-    const email = $("#email").val();
-    const password = $("#password").val();
-
-    if (email && password) {
-      if (isEmployeeExists(email, password)) {
-        window.location.href = '../pages/crud.html';
-        return false;
-      }
-      alert("Email or password is wrong");
-    }
-  });
-}
 
 
