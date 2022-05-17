@@ -142,7 +142,14 @@ function addEventtoModal() {
 
     const isValid = name && email && address && cardNumber && cardName && expiryDate && cvCode;
     if (isValid) {
+      const paymentDetails = getPaymentDetailsFromLocalStorage();
+      let lastId = paymentDetails[paymentDetails.length - 1].id;
+      paymentDetails.push({
+        id: `${++lastId}`,
+        name, email, address, cardNumber, cardName, expiryDate, cvCode
+      });
       updateProduct();
+      setPaymentDetailsToLocalStorage(paymentDetails);
     }
   });
 }
@@ -227,8 +234,16 @@ function getProductsFromLocalStorage() {
   return JSON.parse(localStorage.getItem("rajaerba"))[1];
 }
 
+function getPaymentDetailsFromLocalStorage() {
+  return JSON.parse(localStorage.getItem("rajaerba"))[2];
+}
+
 function setProductsToLocalStorage(products) {
-  localStorage.setItem("rajaerba", JSON.stringify([getEmployeesFromLocalStorage(), products]))
+  localStorage.setItem("rajaerba", JSON.stringify([getEmployeesFromLocalStorage(), products, getPaymentDetailsFromLocalStorage()]))
+}
+
+function setPaymentDetailsToLocalStorage(paymentDetails) {
+  localStorage.setItem("rajaerba", JSON.stringify([getEmployeesFromLocalStorage(), getProductsFromLocalStorage(), paymentDetails]));
 }
 
 function updateCartIcon() {

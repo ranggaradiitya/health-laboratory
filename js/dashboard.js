@@ -52,8 +52,12 @@ function getProductsFromLocalStorage() {
   return JSON.parse(localStorage.getItem("rajaerba"))[1];
 }
 
+function getPaymentDetailsFromLocalStorage() {
+  return JSON.parse(localStorage.getItem("rajaerba"))[2];
+}
+
 function setProductsToLocalStorage(products) {
-  localStorage.setItem("rajaerba", JSON.stringify([getEmployeesFromLocalStorage(), products]))
+  localStorage.setItem("rajaerba", JSON.stringify([getEmployeesFromLocalStorage(), products, getPaymentDetailsFromLocalStorage()]))
 }
 
 function clearInput() {
