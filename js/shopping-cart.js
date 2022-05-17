@@ -78,6 +78,7 @@ function addEventToPurchaseButton() {
 
 function removeCardItem(event) {
   $(event.target).closest("tr").remove()
+  updateCartIcon();
   updateCartTotal();
 }
 
@@ -117,7 +118,6 @@ function purchaseClicked() {
   }
   const myModal = new bootstrap.Modal(document.getElementById('myModal'))
   myModal.show()
-
   addEventtoModal();
 }
 
@@ -164,6 +164,7 @@ function updateProduct() {
   });
 
   $("tbody").html("");
+  updateCartIcon();
   updateCartTotal();
   ready();
   alert("Thank you for your purchase");
@@ -202,10 +203,7 @@ function addItemToCart(title, price) {
     </tr>
   `);
 
-  setTimeout(() => {
-    alert("Product successfully added to cart");
-  }, 250);
-
+  updateCartIcon();
   addEventToRemoveButton();
   addEventToQuantityField();
 }
@@ -231,6 +229,23 @@ function getProductsFromLocalStorage() {
 
 function setProductsToLocalStorage(products) {
   localStorage.setItem("rajaerba", JSON.stringify([getEmployeesFromLocalStorage(), products]))
+}
+
+function updateCartIcon() {
+  let totalProductInCart = $("tbody").children().length;
+  if (totalProductInCart > 0) {
+    $("#cart-btn").addClass("item-number");
+    $("#cart-btn").attr("value", totalProductInCart);
+    $("#cart-btn").parent().css("padding-right", "0");
+    return;
+  }
+  $("#cart-btn").removeClass("item-number");
+  $("#cart-btn").attr("value", totalProductInCart);
+  $("#cart-btn").parent().removeAttr("style");
+}
+
+function getTotalProduct() {
+  return $("tbody").children().length;
 }
 
 function formatRupiah(money) {
