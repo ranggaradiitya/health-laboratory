@@ -182,7 +182,7 @@ function addItemToCart(title, price) {
 
   $(".title").each(function (index, element) {
     if ($(element).text() === title) {
-      alert("This item is already addes to the cart");
+      alert("This item is already added to the cart");
       isProductAvailable = true;
     }
   });
