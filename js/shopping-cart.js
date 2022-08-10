@@ -68,13 +68,13 @@ function dinamicCart() {
 
 function productsRef() {
   const database = firebase.database();
-  return database.ref('products');
+  return database.ref("products");
 }
 
 async function productsShowcase() {
   try {
     $("#product-list").empty();
-    const snapshot = await productsRef().once('value');
+    const snapshot = await productsRef().once("value");
     const products = Object.values(snapshot.val());
     for (const product of products) {
       const { name, price, stock, image } = product;
@@ -88,7 +88,7 @@ async function productsShowcase() {
         <div class="card h-100 shadow p-3">
           <div class="p-3 bg-dark bg-opacity-10 rounded-3">
             <img
-              src="../images/${image}"
+              src="images/${image}"
               class="card-img-top"
               alt="..."
             />
@@ -142,24 +142,32 @@ function addEventToRemoveButton() {
 
 function addEventToIncreaseButton() {
   $(".cart-item-increase-btn").each(function (index, element) {
-    $(element).off().click(function (e) {
-      let quantity = Number($(element).next().text());
-      $(element).next().text(++quantity);
-      checkQuantity(e)
-      updateCartTotal();
-    });
+    $(element)
+      .off()
+      .click(function (e) {
+        let quantity = Number($(element).next().text());
+        $(element)
+          .next()
+          .text(++quantity);
+        checkQuantity(e);
+        updateCartTotal();
+      });
   });
 }
 
 function addEventToDecreaseButton() {
   $(".cart-item-decrease-btn").each(function (index, element) {
-    $(element).off().click(function (e) {
-      let quantity = Number($(element).prev().text());
-      $(element).prev().text(--quantity);
-      quantityChanged(e);
-      updateCartIcon();
-      updateCartTotal();
-    });
+    $(element)
+      .off()
+      .click(function (e) {
+        let quantity = Number($(element).prev().text());
+        $(element)
+          .prev()
+          .text(--quantity);
+        quantityChanged(e);
+        updateCartIcon();
+        updateCartTotal();
+      });
   });
 }
 
@@ -169,8 +177,8 @@ function addEventToPurchaseButton() {
       alert("Cart is empty, add products first before purchase");
       return;
     }
-    const myModal = new bootstrap.Modal(document.getElementById('myModal'))
-    myModal.show()
+    const myModal = new bootstrap.Modal(document.getElementById("myModal"));
+    myModal.show();
     addEventtoModal(e);
   });
 }
@@ -184,7 +192,12 @@ function quantityChanged(event) {
 
 async function checkQuantity(event) {
   try {
-    const productName = $(event.target).parent().parent().prev().children(".cart-item-name").text();
+    const productName = $(event.target)
+      .parent()
+      .parent()
+      .prev()
+      .children(".cart-item-name")
+      .text();
     const quantity = $(event.target).parent().next().text();
 
     const snapshot = await productsRef().once("value");
@@ -206,7 +219,7 @@ async function checkQuantity(event) {
 
 function paymentRef() {
   const database = firebase.database();
-  return database.ref('paymentDetails');
+  return database.ref("paymentDetails");
 }
 
 function addEventtoModal() {
@@ -236,13 +249,26 @@ function addEventtoModal() {
     const expiryDate = $("#expiry-date").val();
     const cvCode = $("#cv-code").val();
 
-    const isValid = name && email && address && cardNumber && cardName && expiryDate && cvCode;
+    const isValid =
+      name &&
+      email &&
+      address &&
+      cardNumber &&
+      cardName &&
+      expiryDate &&
+      cvCode;
     if (isValid) {
       const autoId = paymentRef().push().key;
       const newData = {
-        name, email, address, cardNumber, cardName, expiryDate, cvCode,
-        purchasedProduct: productInCart
-      }
+        name,
+        email,
+        address,
+        cardNumber,
+        cardName,
+        expiryDate,
+        cvCode,
+        purchasedProduct: productInCart,
+      };
       paymentRef().child(autoId).set(newData);
       updateProduct();
       ready();
@@ -250,7 +276,6 @@ function addEventtoModal() {
     }
   });
 }
-
 
 async function updateProduct() {
   try {
@@ -286,8 +311,16 @@ function addItemToCart(title, price) {
 
   $(".cart-item-name").each(function (index, element) {
     if ($(element).text() === title) {
-      let quantity = $(element).parent().next().children(".cart-item-quantity").text();
-      $(element).parent().next().children(".cart-item-quantity").text(++quantity);
+      let quantity = $(element)
+        .parent()
+        .next()
+        .children(".cart-item-quantity")
+        .text();
+      $(element)
+        .parent()
+        .next()
+        .children(".cart-item-quantity")
+        .text(++quantity);
       isProductAvailable = true;
     }
   });
@@ -320,8 +353,18 @@ function addItemToCart(title, price) {
 function updateCartTotal() {
   let total = 0;
   $(".cart-item").each(function (index, element) {
-    let price = $(element).children().eq(0).children(".cart-item-price").text().replace("Rp", "").replaceAll(".", "");
-    let quantity = $(element).children().eq(1).children(".cart-item-quantity").text();
+    let price = $(element)
+      .children()
+      .eq(0)
+      .children(".cart-item-price")
+      .text()
+      .replace("Rp", "")
+      .replaceAll(".", "");
+    let quantity = $(element)
+      .children()
+      .eq(1)
+      .children(".cart-item-quantity")
+      .text();
     total += Number(price) * Number(quantity);
   });
   $(".cart-total-price").text(formatRupiah(total));
@@ -342,15 +385,17 @@ function updateCartIcon() {
 
 function searchProduct() {
   $("#search").on("input", function () {
-    $("#product-list").children().each(function (index, element) {
-      const name = $(element).find(".card-title").text().toLowerCase();
-      const searchValue = $("#search").val().toLowerCase();
-      if (name.includes(searchValue)) {
-        $(element).css("display", "");
-      } else {
-        $(element).css("display", "none");
-      }
-    });
+    $("#product-list")
+      .children()
+      .each(function (index, element) {
+        const name = $(element).find(".card-title").text().toLowerCase();
+        const searchValue = $("#search").val().toLowerCase();
+        if (name.includes(searchValue)) {
+          $(element).css("display", "");
+        } else {
+          $(element).css("display", "none");
+        }
+      });
   });
 }
 
@@ -363,7 +408,6 @@ function logOut() {
   });
 }
 
-
 function formatRupiah(money) {
   return new Intl.NumberFormat("id-ID", {
     style: "currency",
@@ -373,4 +417,3 @@ function formatRupiah(money) {
     .format(money)
     .replace(/\s/g, "");
 }
-
