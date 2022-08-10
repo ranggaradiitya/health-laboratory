@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css"
+    />
+    <link rel="icon" type="image/jpg" href="../images/favicon.jpg" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>User Account Page - Rajaerba Indochem</title>
+  </head>
+  <body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html"
+          ><img
+            src="../images/rajaerba-logo.png"
+            class="img-fluid"
+            alt=""
+            width="200"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="navmenu"
+        >
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a
+                href="../index.html"
+                class="nav-link px-4 fw-bold hover-color text-center text-sm-start"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="shopping-cart.html"
+                class="nav-link px-4 fw-bold hover-color text-center text-sm-start"
+                >Buy Our Product</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="../index.html#ourteam"
+                class="nav-link px-4 fw-bold hover-color text-center text-sm-start"
+                >Our Team</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="../index.html#contactus"
+                class="nav-link px-4 fw-bold hover-color text-center text-sm-start"
+                >Contact Us</a
+              >
+            </li>
+          </ul>
+          <div class="ms-auto">
+            <div class="dropdown text-center">
+              <button
+                type="button"
+                class="btn btn-warning text-light w-100"
+                data-bs-toggle="dropdown"
+              >
+                <i class="bi bi-person-circle"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="user-profile.html"
+                    >My Profile</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="user-account.html">Account</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#" id="logout">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section>
+      <div class="container">
+        <div class="row align-items-center flex-column">
+          <div
+            class="col-12 col-sm-6 border border-3 rounded rounded-4 p-5 my-5"
+          >
+            <h3 class="fw-bold">Change Email</h3>
+            <hr />
+            <form autocomplete="off">
+              <div class="mb-3">
+                <label for="new-email" class="form-label"
+                  >New Email <span class="text-danger">*</span></label
+                >
+                <input
+                  type="email"
+                  class="form-control input-focus"
+                  id="new-email"
+                  placeholder="email@domain.com"
+                />
+              </div>
+              <button class="btn btn-secondary" id="change-email">
+                Change Email
+              </button>
+            </form>
+          </div>
+          <div
+            class="col-12 col-sm-6 border border-3 rounded rounded-4 p-5 mb-5"
+          >
+            <h3 class="fw-bold">Change Password</h3>
+            <hr />
+            <form>
+              <div class="mb-3">
+                <label for="new-password" class="form-label"
+                  >New Password <span class="text-danger">*</span></label
+                >
+                <div class="input-group">
+                  <input
+                    type="password"
+                    class="form-control input-focus"
+                    id="new-password"
+                    placeholder="Enter new password"
+                  />
+                  <button
+                    class="btn btn-outline-secondary input-focus"
+                    type="button"
+                    id="show-new-password"
+                  >
+                    <i class="bi bi-eye-fill" id="icon-password"></i>
+                  </button>
+                </div>
+                <!-- <div class="form-text">
+                  Use a minimum of 8 characters with a combination of letters
+                  and numbers.
+                </div> -->
+              </div>
+              <div class="mb-3">
+                <label for="confirm-new-password" class="form-label"
+                  >Confirm New Password
+                  <span class="text-danger">*</span></label
+                >
+                <div class="input-group">
+                  <input
+                    type="password"
+                    class="form-control input-focus"
+                    id="confirm-new-password"
+                    placeholder="Confirm password"
+                  />
+                  <button
+                    class="btn btn-outline-secondary"
+                    type="button"
+                    id="show-confirm-new-password"
+                  >
+                    <i class="bi bi-eye-fill" id="icon-confirm-password"></i>
+                  </button>
+                </div>
+              </div>
+              <button class="btn btn-secondary" id="save-password">
+                Save Password
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="p-3 bg-dark text-white text-center">
+      <div class="container">
+        <p class="lead m-0">Copyright &copy; 2022 PT.Rajaerba Indochem</p>
+      </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>
+    <script src="js/firebase-connection.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/user-account.js"></script>
+  </body>
+</html>

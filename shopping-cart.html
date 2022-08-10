@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css"
+    />
+    <link rel="icon" type="image/jpg" href="../images/favicon.jpg" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Shopping Cart Page - Rajaerba Indochem</title>
+  </head>
+  <body style="overflow-x: hidden" class="bg-light">
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html"
+          ><img
+            src="../images/rajaerba-logo.png"
+            class="img-fluid"
+            alt=""
+            width="200"
+        /></a>
+        <a
+          href="#shopping-cart"
+          class="btn btn-warning text-white d-sm-none ms-auto me-2"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#demo"
+        >
+          <i class="bi bi-cart cart-btn" value="0"></i>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="navmenu"
+        >
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a
+                href="../index.html"
+                class="nav-link px-4 fw-bold hover-color text-center text-sm-start"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="shopping-cart.html"
+                class="nav-link px-4 fw-bold hover-color text-center text-sm-start"
+                >Buy Our Product</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="../index.html#ourteam"
+                class="nav-link px-4 fw-bold hover-color text-center text-sm-start"
+                >Our Team</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="../index.html#contactus"
+                class="nav-link px-4 fw-bold hover-color text-center text-sm-start"
+                >Contact Us</a
+              >
+            </li>
+          </ul>
+          <div class="ms-auto d-sm-flex">
+            <button
+              class="btn btn-warning text-light d-none d-sm-inline-block w-100"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#demo"
+            >
+              <i class="bi bi-cart cart-btn" value="0"></i>
+            </button>
+            <div id="dinamic-navbar"></div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Shopping Cart -->
+    <section class="bg-light p-0 pt-4 p-md-4 mb-5">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col">
+            <h1 class="text-warning mb-4 text-center text-sm-start">Product</h1>
+            <div class="input-group rounded w-25 mb-4">
+              <input
+                type="text"
+                id="search"
+                class="form-control rounded input-focus"
+                placeholder="Search product name"
+              />
+              <span class="input-group-text border-0" id="search-addon">
+                <i class="bi bi-search"></i>
+              </span>
+            </div>
+            <div
+              id="product-list"
+              class="row row-cols-2 row-cols-lg-5 g-1 g-lg-4"
+            >
+              <!-- list product get from local storage -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header bg-warning text-white">
+            <h4 class="modal-title">Payment Details</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <form id="payment-details" autocomplete="off">
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="mb-3">
+                <label class="mb-2" for="name">Full name</label>
+                <input
+                  type="text"
+                  class="form-control input-focus"
+                  id="name"
+                  placeholder="Enter your full name"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="mb-2" for="email">Email</label>
+                <input
+                  type="email"
+                  class="form-control input-focus"
+                  id="email"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label class="mb-2" for="address">Address</label>
+                <textarea
+                  class="form-control input-focus"
+                  rows="5"
+                  id="address"
+                  placeholder="Include your country, city, state/province, and zip/postal"
+                  required
+                ></textarea>
+              </div>
+              <div class="card">
+                <div class="card-header bg-warning text-white">
+                  <i class="bi bi-credit-card"></i> Card Details
+                </div>
+                <div class="card-body">
+                  <div class="mb-3">
+                    <label class="mb-2" for="card-number">Card Number</label>
+                    <div class="input-group">
+                      <span class="input-group-text"
+                        ><i class="bi bi-credit-card-fill"></i
+                      ></span>
+                      <input
+                        type="number"
+                        class="form-control input-focus"
+                        id="card-number"
+                        placeholder="1234 5678 9012 3456"
+                        required
+                        maxlength="16"
+                      />
+                    </div>
+                  </div>
+                  <div class="mb-0">
+                    <div class="row">
+                      <div class="col">
+                        <label class="mb-2" for="card-name">Name on Card</label>
+                        <input
+                          id="card-name"
+                          type="text"
+                          class="form-control input-focus"
+                          placeholder="John Doe"
+                          required
+                        />
+                      </div>
+                      <div class="col d-flex flex-column justify-content-end">
+                        <label class="mb-2" for="expiry-date"
+                          >Expiry Date</label
+                        >
+                        <input
+                          id="expiry-date"
+                          type="text"
+                          class="form-control input-focus"
+                          placeholder="MM / YY"
+                          required
+                          maxlength="5"
+                        />
+                      </div>
+                      <div class="col d-flex flex-column justify-content-end">
+                        <label class="mb-2" for="cv-code">CV Code</label>
+                        <input
+                          id="cv-code"
+                          type="number"
+                          class="form-control input-focus"
+                          placeholder="123"
+                          maxlength="3"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-4 mb-2 text-center">
+                You'll be charged <span id="total-payment">US$29.25</span>
+              </p>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button
+                id="pay"
+                type="submit"
+                class="btn btn-warning text-white w-100"
+              >
+                Pay
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Offcanvas Sidebar -->
+    <div class="offcanvas offcanvas-end bg-light" id="demo">
+      <div class="offcanvas-header">
+        <h1 class="offcanvas-title">Shopping Cart</h1>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+        ></button>
+      </div>
+      <div
+        class="offcanvas-body d-flex flex-column justify-content-between mb-3"
+      >
+        <div class="cart-items"></div>
+        <div>
+          <h4 class="cart-total text-center fst-italic">
+            Total: <span class="cart-total-price">Rp0</span>
+          </h4>
+          <div id="dinamic-cart"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>
+    <script src="js/firebase-connection.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/shopping-cart.js"></script>
+  </body>
+</html>

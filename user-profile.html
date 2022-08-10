@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css"
+    />
+    <link rel="icon" type="image/jpg" href="../images/favicon.jpg" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>User Profile Page - Rajaerba Indochem</title>
+  </head>
+  <body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html"
+          ><img
+            src="../images/rajaerba-logo.png"
+            class="img-fluid"
+            alt=""
+            width="200"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="navmenu"
+        >
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a
+                href="../index.html"
+                class="nav-link px-4 fw-bold hover-color text-center text-sm-start"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="shopping-cart.html"
+                class="nav-link px-4 fw-bold hover-color text-center text-sm-start"
+                >Buy Our Product</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="../index.html#ourteam"
+                class="nav-link px-4 fw-bold hover-color text-center text-sm-start"
+                >Our Team</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="../index.html#contactus"
+                class="nav-link px-4 fw-bold hover-color text-center text-sm-start"
+                >Contact Us</a
+              >
+            </li>
+          </ul>
+          <div class="ms-auto">
+            <div class="dropdown text-center">
+              <button
+                type="button"
+                class="btn btn-warning text-light w-100"
+                data-bs-toggle="dropdown"
+              >
+                <i class="bi bi-person-circle"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="user-profile.html"
+                    >My Profile</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="user-account.html">Account</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#" id="logout">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div
+            class="col-12 col-sm-6 border border-3 rounded rounded-4 p-5 my-5"
+          >
+            <h3 class="fw-bold">User Profile</h3>
+            <hr />
+            <form autocomplete="off">
+              <div class="mb-3">
+                <label for="fullname" class="form-label"
+                  >Full Name <span class="text-danger">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control input-focus"
+                  id="fullname"
+                  placeholder="Enter your full name"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="username" class="form-label">Username </label>
+                <input
+                  type="text"
+                  class="form-control input-focus"
+                  id="username"
+                  placeholder="Enter your username"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="email@domain.com"
+                  disabled
+                />
+                <div class="form-text">
+                  You can change your email address via the
+                  <a href="user-account.html">Account</a> menu.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="phone-number" class="form-label"
+                  >Phone Number</label
+                >
+                <div class="input-group">
+                  <span class="input-group-text">+62</span>
+                  <input
+                    type="text"
+                    class="form-control input-focus"
+                    id="phone-number"
+                    placeholder="81234567890"
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="birth-date" class="form-label">Birth Date</label>
+                <input
+                  type="date"
+                  class="form-control input-focus"
+                  id="birth-date"
+                />
+              </div>
+              <div class="mb-3">
+                <p>Gender</p>
+                <div class="form-check">
+                  <input
+                    class="form-check-input input-focus"
+                    type="radio"
+                    name="gender"
+                    id="male"
+                    value="Male"
+                  />
+                  <label class="form-check-label" for="male"> Male </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input input-focus"
+                    type="radio"
+                    name="gender"
+                    id="female"
+                    value="Female"
+                  />
+                  <label class="form-check-label" for="female"> Female </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input input-focus"
+                    type="radio"
+                    name="gender"
+                    id="other"
+                    value="Other"
+                  />
+                  <label class="form-check-label" for="other"> Other </label>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <textarea
+                  class="form-control input-focus"
+                  id="address"
+                  cols="30"
+                  rows="5"
+                  placeholder="Enter your address"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-secondary" id="save-changes">
+                Save Changes
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="p-3 bg-dark text-white text-center">
+      <div class="container">
+        <p class="lead m-0">Copyright &copy; 2022 PT.Rajaerba Indochem</p>
+      </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>
+    <script src="js/firebase-connection.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/user-profile.js"></script>
+  </body>
+</html>
